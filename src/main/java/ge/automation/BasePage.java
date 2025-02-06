@@ -81,36 +81,36 @@ public class BasePage {
     }
 
 
-    public void enterText(By locator, String text) {
+    public void enterText(WebElement locator, String text) {
         waitForElementToBeClickable(locator);
-        driver.findElement(locator).sendKeys(text);
+        locator.sendKeys(text);
     }
 
-    public void clickToElement(By locator) {
-        driver.findElement(locator).click();
+    public void clickToElement(WebElement locator) {
+        locator.click();
     }
 
-    public void clickToElementWithWait(By locator) {
+    public void clickToElementWithWait(WebElement locator) {
         waitForElementToBeClickable(locator);
-        driver.findElement(locator).click();
+        locator.click();
     }
 
-    public void waitForElementToBeClickable(By locator) {
+    public void waitForElementToBeClickable(WebElement locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public String getElementText(By locator) {
+    public String getElementText(WebElement locator) {
         waitForElementToBeVisible(locator);
-        return driver.findElement(locator).getText();
+        return locator.getText();
     }
 
-    public void waitForElementToBeVisible(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public void waitForElementToBeVisible(WebElement locator) {
+        wait.until(ExpectedConditions.visibilityOf(locator));
     }
 
-    public String getCssValue(By locator, String propertyName) {
+    public String getCssValue(WebElement locator, String propertyName) {
         waitForElementToBeVisible(locator);
-        return driver.findElement(locator).getCssValue(propertyName);
+        return locator.getCssValue(propertyName);
     }
 
 }
