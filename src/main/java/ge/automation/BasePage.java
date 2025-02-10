@@ -59,6 +59,7 @@
 package ge.automation;
 
 import ge.automation.pages.LoginPage;
+import ge.automation.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,23 +81,26 @@ public class BasePage {
 
     }
 
-
     public void enterText(WebElement locator, String text) {
         waitForElementToBeClickable(locator);
         locator.sendKeys(text);
+        Utils.log("მოვძებნე ელემენტი: " + locator + " ] გადავეცი ტექსტი: "  + text);
     }
 
     public void clickToElement(WebElement locator) {
         locator.click();
+        Utils.log("დავაკლიკე [ " + locator + " ] - ზე");
     }
 
     public void clickToElementWithWait(WebElement locator) {
         waitForElementToBeClickable(locator);
-        locator.click();
+        clickToElement(locator);
     }
 
     public void waitForElementToBeClickable(WebElement locator) {
+        Utils.log("ველოდები რომ ელემენტი [ " + locator + " ] გახდეს დაკლიკებადი");
         wait.until(ExpectedConditions.elementToBeClickable(locator));
+        Utils.log("ვიპოვე ელემენტი [ " + locator + " ]");
     }
 
     public String getElementText(WebElement locator) {
@@ -105,7 +109,9 @@ public class BasePage {
     }
 
     public void waitForElementToBeVisible(WebElement locator) {
+        Utils.log("ველოდები რომ ელემენტი [ " + locator + " ] გამოჩნდეს");
         wait.until(ExpectedConditions.visibilityOf(locator));
+        Utils.log("ელემენტი [ " + locator + " ] გამოჩნდა");
     }
 
     public String getCssValue(WebElement locator, String propertyName) {
