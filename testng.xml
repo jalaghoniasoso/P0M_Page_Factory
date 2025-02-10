@@ -1,10 +1,13 @@
 <suite name="POM - project">
-    <Listeners>
-        <Listener class-name="ge.automation.utils.TestListener" />
-    </Listeners>
+
+    <listeners>
+        <listener class-name="ge.automation.utils.TestListener" />
+    </listeners>
+
     <test name="Login Module">
         <classes>
             <class name="ge.automation.tests.LoginTest" />
-        </classes>>
+        </classes>
     </test>
+
 </suite>
