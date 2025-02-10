@@ -15,11 +15,13 @@ public class TestListener implements ITestListener {
     }
     @Override
     public void onTestSuccess(ITestResult result){
+        ExtentReportManager.getTest().pass("Test Passed");
         System.out.println("Test Success: " + result.getName());
     }
     @Override
     public void onTestFailure(ITestResult result){
         System.out.println("Test Failure: " + result.getName());
+        ExtentReportManager.getTest().fail("Test Failed " + result.getThrowable());
     }
 
     @Override
